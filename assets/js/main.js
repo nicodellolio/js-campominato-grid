@@ -1,7 +1,38 @@
 //creiamo una griglia di prato fiorito con all'interno dei quadrati con all'interno dei numeri progressivi da 1 a 100
 
 //dichiariamo quante celle vogliamo
-const maxCellNumber = 100
+
+
+function selectFunction() {
+    diffLevel = document.getElementById('difficulty').value;
+    console.log(diffLevel);
+
+    if (diffLevel === '1') {
+        maxCellNumber = 49
+        console.log(maxCellNumber);
+        return maxCellNumber;
+
+    } else if (diffLevel === '2') {
+        maxCellNumber = 81
+        console.log(maxCellNumber);
+        return maxCellNumber;
+
+    } else if (diffLevel === '3'){
+        maxCellNumber = 100
+        console.log(maxCellNumber);
+        return maxCellNumber;
+
+    } else {
+        document.getElementById('come_on').insertAdjacentHTML('beforeend','PLEASE SELECT A DIFFICULTY')
+    }
+
+}
+
+maxCellNumber = selectFunction()
+
+
+console.log(maxCellNumber);
+
 
 //iteriamo attraverso il ciclo for le caselle all/interno del DOM
 for (let i = 0; i < maxCellNumber; i++) {
@@ -23,6 +54,9 @@ for (let i = 0; i < boxes.length; i++) {
 }
 
 //EASY PEASY LEMON SQUEEZY 🤩
+
+
+// BONUS
 
 
 
