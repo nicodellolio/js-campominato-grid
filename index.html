@@ -22,12 +22,21 @@
                 height: fit-content;
                 gap: 1rem;
                 font-size: 2rem;
+                z-index: 1;
+
+                h4{
+                    display: inline;
+                }
+
 
                 button, select{
                     font-size: 1.5rem;
                     padding: 0.25rem 3rem;
                     border-radius: 10px;
                 }
+            }
+            .play-none{
+                display: none;
             }
             .logo{
                 display: flex;
@@ -50,15 +59,25 @@
             background-color: rgb(9, 214, 194);
         }
 
+        .easy-size{
+            max-width: 700px;
+        }
+        .medium-size{
+            max-width: 900px;
+        }
+        .hard-size{
+            max-width: 1000px;
+        }
+
         #container{
             display: flex;
             flex-wrap: wrap;
             margin: auto;
-            max-width: 1000px;
             padding: 100px;
-
+            
             #come_on{
                 margin: auto;
+                text-align: center;
             }
             
 
@@ -89,20 +108,21 @@
         <div class="play">
             
             <div class="difficulty">
-                Difficoltà:
+                <h4>Difficoltà:</h4>
                 <select name="difficulty" id="difficulty">
-                    <option value="none">Select --</option>
+                    <option value="none">Select -- </option>
                     <option value="1">Easy</option>
                     <option value="2">Medium</option>
                     <option value="3">Hard</option>
                 </select>
             </div>
 
-            <button type="button" onclick="selectFunction(value)">Play</button>
+            <button type="submit" onclick="selectFunction(), generateGrid()">Play</button>
         </div>
     </header>
     <main>
-        <div id="container"><h1 id="come_on"></h1></div>
+        <div id="container">
+        </div>
     </main>
     <footer>
         <p>made by Boolean</p>

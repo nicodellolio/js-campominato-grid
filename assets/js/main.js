@@ -3,42 +3,44 @@
 //dichiariamo quante celle vogliamo
 
 let diffLevel = document.getElementById('difficulty').value;
-console.log(diffLevel);
 
-function selectFunction(diffLevel) {
-
+function selectFunction() {
+    const setSize = document.getElementById('container')
     diffLevel = document.getElementById('difficulty').value;
     console.log(diffLevel);
 
     if (diffLevel === '1') {
         maxCellNumber = 49
         console.log(maxCellNumber);
-        return maxCellNumber;
+        setSize.classList.add('easy-size');
+
 
     } else if (diffLevel === '2') {
         maxCellNumber = 81
         console.log(maxCellNumber);
-        return maxCellNumber;
+        setSize.classList.add('medium-size');
 
     } else if (diffLevel === '3'){
         maxCellNumber = 100
         console.log(maxCellNumber);
-        return maxCellNumber;
-
-    } else {
-        document.getElementById('come_on').insertAdjacentHTML('beforeend','PLEASE SELECT A DIFFICULTY')
+        setSize.classList.add('hard-size');
     }
 
+    return maxCellNumber.value;
 }
 
 maxCellNumber = selectFunction()
-
-
 console.log(maxCellNumber);
 
 
-//iteriamo attraverso il ciclo for le caselle all/interno del DOM
-for (let i = 0; i < maxCellNumber; i++) {
+
+function generateGrid() {
+    const getPlay = document.querySelector('.play')
+    getPlay.classList.add('play-none');
+
+
+    //iteriamo attraverso il ciclo for le caselle all/interno del DOM
+    for (let i = 0; i < maxCellNumber; i++) {
 
     // nella stessa iterazione inseriamo sia i quadrati che i numeri all'interno
     const markup = '<div class="box" >' + [i + 1] + '</div>'
@@ -55,6 +57,11 @@ for (let i = 0; i < boxes.length; i++) {
         console.log(`Box selected: ` + [i + 1]);
     })
 }
+
+}
+
+
+
 
 //EASY PEASY LEMON SQUEEZY 🤩
 
