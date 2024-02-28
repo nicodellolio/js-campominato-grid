@@ -7,22 +7,22 @@ const maxCellNumber = 100
 for (let i = 0; i < maxCellNumber; i++) {
 
     // nella stessa iterazione inseriamo sia i quadrati che i numeri all'interno
-    const markup = '<div id="box" >' + [i + 1] + '</div>'
+    const markup = '<div class="box" >' + [i + 1] + '</div>'
     markupElement = document.getElementById('container').insertAdjacentHTML('beforeend', markup);
 }
 
-let boxes = document.getElementById('box');
+let boxes = document.getElementsByClassName('box');
 
 for (let i = 0; i < boxes.length; i++) {
     const box = boxes[i];
 
     box.addEventListener('click', function (){
         box.classList.add('clicked');
+        console.log(`Box selected: ` + [i + 1]);
     })
-    console.log('clicked');
-
 }
-console.log(box);
+
+//EASY PEASY LEMON SQUEEZY 🤩
 
 
 
