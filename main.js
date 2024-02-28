@@ -7,18 +7,22 @@ const maxCellNumber = 100
 for (let i = 0; i < maxCellNumber; i++) {
 
     // nella stessa iterazione inseriamo sia i quadrati che i numeri all'interno
-    const markup = '<div class="box">' + [i + 1] + '</div>'
+    const markup = '<div id="box" >' + [i + 1] + '</div>'
     markupElement = document.getElementById('container').insertAdjacentHTML('beforeend', markup);
 }
 
-const box = document.getElementsByClassName('box')
-// console.log(box);
+let boxes = document.getElementById('box');
 
-box.addEventListener('click', function() {
-    box.classList.add('clicked')
+for (let i = 0; i < boxes.length; i++) {
+    const box = boxes[i];
+
+    box.addEventListener('click', function (){
+        box.classList.add('clicked');
+    })
     console.log('clicked');
-})
 
+}
+console.log(box);
 
 
 
