@@ -6,21 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prato fiorito (o quasi)</title>
     <style>
+
         main{
-            background-color: turquoise;
+            background-color: rgb(9, 214, 194);
+            font-family:Arial, Helvetica, sans-serif;
         }
         #container{
             display: flex;
             flex-wrap: wrap;
             margin: auto;
-            max-width: 1250px;
+            max-width: 1000px;
+            padding: 100px;
 
             .box{
+                box-sizing: border-box;
                 width: 100px;
                 height: 100px;
                 background-color: transparent;
-                border: 2px solid black;
-                margin: 5px;
+                border: 1px solid black;
+                font-size: 2rem;
+                text-align: center;
+                line-height: 3;
+                cursor: pointer;
+            }
+            .clicked{
+                background-color: skyblue;
             }
         }
     </style>
