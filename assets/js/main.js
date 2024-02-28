@@ -2,8 +2,11 @@
 
 //dichiariamo quante celle vogliamo
 
+let diffLevel = document.getElementById('difficulty').value;
+console.log(diffLevel);
 
-function selectFunction() {
+function selectFunction(diffLevel) {
+
     diffLevel = document.getElementById('difficulty').value;
     console.log(diffLevel);
 
