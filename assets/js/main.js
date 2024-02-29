@@ -5,7 +5,7 @@
 const playButton = document.getElementById('playButton')
 let diffLevel = document.getElementById('difficulty').value;
 
-playButton.addEventListener ('click', function (e) {
+playButton.addEventListener('click', function (e) {
 
     e.preventDefault()
 
@@ -31,7 +31,7 @@ playButton.addEventListener ('click', function (e) {
     } else if (diffLevel === 'none') {
         console.log('invalid');
         setSize.classList.add('hard-size');
-        document.getElementById('container').insertAdjacentHTML('beforeend','<div class="fs-2 fw-bolder w-100">AGGIORNA LA PAGINA E SELEZIONA UNA DIFFICOLTÀ  😅</div>')
+        document.getElementById('container').insertAdjacentHTML('beforeend', '<div class="fs-2 fw-bolder w-100">AGGIORNA LA PAGINA E SELEZIONA UNA DIFFICOLTÀ  😅</div>')
     }
 
     const getPlay = document.querySelector('.play')
@@ -42,9 +42,9 @@ playButton.addEventListener ('click', function (e) {
     for (let i = 0; i < maxCellNumber; i++) {
 
         // nella stessa iterazione inseriamo sia i quadrati che i numeri all'interno
-        const markup = '<div class="box" >' + [i + 1] + '</div>'
-        markupElement = document.getElementById('container').insertAdjacentHTML('beforeend', markup);
-        
+        let markup = '<div class="box">' + [i + 1] + '</div>'
+        let markupElement = document.getElementById('container').insertAdjacentHTML('beforeend', markup);
+
     }
 
     let boxes = document.getElementsByClassName('box');
@@ -53,27 +53,62 @@ playButton.addEventListener ('click', function (e) {
         const box = boxes[i];
 
         box.addEventListener('click', function () {
+
+            
             box.classList.add('clicked');
             console.log(`Box selected: ` + [i + 1]);
+
+            if (mushList.includes(i)) {
+                const markupBoxes = document.querySelectorAll('.box')
+                markupBoxes[i].innerHTML = ('👻');
+                console.log('👻');
+
+                const youLost = document.getElementById('youLost')
+                youLost.classList.toggle('none');
+
+
+
+
+
+            }
+
         })
     }
+
+    function generateMush() {
+        const mushArray = []
+
+        while (mushArray.length < 16) {
+            const mushroom = Math.floor(Math.random(1) * 100);
+
+            if (!mushArray.includes(mushroom)) {
+                mushArray.push(mushroom);
+            }
+        }
+
+        return mushArray
+    }
+    
+    const mushList = generateMush();
+    console.log(mushList);
+
 })
 
-
-function generateMush (){
-    const mushArray = []
+// function pushMush() {
+//     const boxNode = document.querySelector('.box')
     
-    while (mushArray.length < 16) {
-        const mushroom = Math.floor(Math.random(1) * 100);
+//     boxNode.innerHTML = (generateMush)
+//     console.log(boxNode);   
+// }
 
-        if (!mushArray.includes(mushroom)) {
-            mushArray.push(mushroom);
-            console.log(mushroom);
-        }
-        
-    } 
-    return mushArray
-}
 
-const mushList = generateMush();
-console.log(mushList);
+
+
+
+
+
+
+
+
+
+
