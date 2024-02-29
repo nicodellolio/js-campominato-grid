@@ -48,13 +48,13 @@ playButton.addEventListener('click', function (e) {
     }
 
     let boxes = document.getElementsByClassName('box');
-
+    
+    const pointsList = []
     for (let i = 0; i < boxes.length; i++) {
         const box = boxes[i];
 
         box.addEventListener('click', function () {
 
-            const pointsList = []
             
             box.classList.add('clicked');
             console.log(`Box selected: ` + [i + 1]);
@@ -62,9 +62,9 @@ playButton.addEventListener('click', function (e) {
 
             if (!mushList.includes(i)) {
                 console.log('BRAVOOOOO');
-                pointsList.push(i += i)
+                pointsList.push(i)
             } 
-            console.log(pointsList);
+            console.log(pointsList.length);
             
             if (mushList.includes(i)) {
                 const markupBoxes = document.querySelectorAll('.box')
@@ -75,8 +75,8 @@ playButton.addEventListener('click', function (e) {
                 const yourScore = document.getElementById('score')
 
                 youLost.classList.add('show');
-                yourScore.insertAdjacentHTML('beforeend', '')
-
+                yourScore.insertAdjacentHTML('beforeend', pointsList.length + '0')
+                yourScore.insertAdjacentHTML('afterbegin','<p class="fs-2">↻ refresh to play again</p>')
             }
 
         })
@@ -100,22 +100,3 @@ playButton.addEventListener('click', function (e) {
     console.log(mushList);
 
 })
-
-// function pushMush() {
-//     const boxNode = document.querySelector('.box')
-    
-//     boxNode.innerHTML = (generateMush)
-//     console.log(boxNode);   
-// }
-
-
-
-
-
-
-
-
-
-
-
-
