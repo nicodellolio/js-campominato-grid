@@ -57,20 +57,23 @@ playButton.addEventListener ('click', function (e) {
             console.log(`Box selected: ` + [i + 1]);
         })
     }
-
-
 })
 
-const mushArray = []
 
-function generateMush (array){
-    while (array.lenght <= 16) {
-        const mushroom = Math.floor(Math.floor(Math.random(1) * 100));
-        array.push(mushroom)
-        console.log(mushroom);
+function generateMush (){
+    const mushArray = []
+    
+    while (mushArray.length < 16) {
+        const mushroom = Math.floor(Math.random(1) * 100);
+
+        if (!mushArray.includes(mushroom)) {
+            mushArray.push(mushroom);
+            console.log(mushroom);
+        }
+        
     } 
-
-    return mushroom
+    return mushArray
 }
 
-console.log(mushArray);
+const mushList = generateMush();
+console.log(mushList);
