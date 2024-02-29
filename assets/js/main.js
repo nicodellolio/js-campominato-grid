@@ -54,21 +54,28 @@ playButton.addEventListener('click', function (e) {
 
         box.addEventListener('click', function () {
 
+            const pointsList = []
             
             box.classList.add('clicked');
             console.log(`Box selected: ` + [i + 1]);
 
+
+            if (!mushList.includes(i)) {
+                console.log('BRAVOOOOO');
+                pointsList.push(i += i)
+            } 
+            console.log(pointsList);
+            
             if (mushList.includes(i)) {
                 const markupBoxes = document.querySelectorAll('.box')
                 markupBoxes[i].innerHTML = ('👻');
                 console.log('👻');
 
                 const youLost = document.getElementById('youLost')
-                youLost.classList.toggle('none');
+                const yourScore = document.getElementById('score')
 
-
-
-
+                youLost.classList.add('show');
+                yourScore.insertAdjacentHTML('beforeend', '')
 
             }
 
