@@ -11,13 +11,13 @@ playButton.addEventListener ('click', function (e) {
 
     const setSize = document.getElementById('container')
     diffLevel = document.getElementById('difficulty').value;
-    console.log(diffLevel);
+    // console.log(diffLevel);
 
     if (diffLevel === '1') {
         maxCellNumber = 49
         console.log(maxCellNumber);
         setSize.classList.add('easy-size');
-        
+
     } else if (diffLevel === '2') {
         maxCellNumber = 81
         console.log(maxCellNumber);
@@ -27,20 +27,24 @@ playButton.addEventListener ('click', function (e) {
         maxCellNumber = 100
         console.log(maxCellNumber);
         setSize.classList.add('hard-size');
+
+    } else if (diffLevel === 'none') {
+        console.log('invalid');
+        setSize.classList.add('hard-size');
+        document.getElementById('container').insertAdjacentHTML('beforeend','<div class="fs-2 fw-bolder w-100">AGGIORNA LA PAGINA E SELEZIONA UNA DIFFICOLTÀ  😅</div>')
     }
 
     const getPlay = document.querySelector('.play')
     getPlay.classList.add('play-none');
 
-
     //iteriamo attraverso il ciclo for le caselle all/interno del DOM
+
     for (let i = 0; i < maxCellNumber; i++) {
 
         // nella stessa iterazione inseriamo sia i quadrati che i numeri all'interno
         const markup = '<div class="box" >' + [i + 1] + '</div>'
         markupElement = document.getElementById('container').insertAdjacentHTML('beforeend', markup);
-
-
+        
     }
 
     let boxes = document.getElementsByClassName('box');
@@ -54,4 +58,19 @@ playButton.addEventListener ('click', function (e) {
         })
     }
 
+
 })
+
+const mushArray = []
+
+function generateMush (array){
+    while (array.lenght <= 16) {
+        const mushroom = Math.floor(Math.floor(Math.random(1) * 100));
+        array.push(mushroom)
+        console.log(mushroom);
+    } 
+
+    return mushroom
+}
+
+console.log(mushArray);
