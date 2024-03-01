@@ -65,18 +65,27 @@ playButton.addEventListener('click', function (e) {
                 pointsList.push(i)
             } 
             console.log(pointsList.length);
+
+            const pointsToWin = maxCellNumber - 16 
+            const youLost = document.getElementById('youLost')
+            const yourScore = document.getElementById('score')
             
             if (mushList.includes(i)) {
+                box.classList.add('haunted');
+                // const dontCLickAnymore = document.querySelector('.gameOverDiv')
                 const markupBoxes = document.querySelectorAll('.box')
-                markupBoxes[i].innerHTML = ('👻');
-                console.log('👻');
 
-                const youLost = document.getElementById('youLost')
-                const yourScore = document.getElementById('score')
+                markupBoxes[i].innerHTML = ('👻');
+                console.log('👻')
+                // dontCLickAnymore.classList.add('gameOverShow')
 
                 youLost.classList.add('show');
                 yourScore.insertAdjacentHTML('beforeend', pointsList.length + '0')
                 yourScore.insertAdjacentHTML('afterbegin','<p class="fs-2">↻ refresh to play again</p>')
+
+            } else if (pointsList.lenght === pointsToWin){
+                alert('WHAT?!?!?!?! YOU WON!!!!!!!')
+                yourScore.insertAdjacentHTML('beforeend', pointsList.length + '0')
             }
 
         })
@@ -86,11 +95,24 @@ playButton.addEventListener('click', function (e) {
         const mushArray = []
 
         while (mushArray.length < 16) {
-            const mushroom = Math.floor(Math.random(1) * 100);
 
-            if (!mushArray.includes(mushroom)) {
-                mushArray.push(mushroom);
+            if (maxCellNumber===100) {
+                const mushroom = Math.floor(Math.random(1) * 100);
+                if (!mushArray.includes(mushroom)) {
+                    mushArray.push(mushroom);
+                }
+            } else if (maxCellNumber===81){
+                const mushroom = Math.floor(Math.random(1) * 81);
+                if (!mushArray.includes(mushroom)) {
+                    mushArray.push(mushroom);
+                }
+            } else if (maxCellNumber===49){
+                const mushroom = Math.floor(Math.random(1) * 49);
+                if (!mushArray.includes(mushroom)) {
+                    mushArray.push(mushroom);
+                }
             }
+
         }
 
         return mushArray
