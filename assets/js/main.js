@@ -69,7 +69,6 @@ playButton.addEventListener('click', function (e) {
                     console.log('BRAVOOOOO');
                     pointsList.push(i)
                 }
-                
                 console.log(pointsList.length);
                 
                 if (ghostList.includes(i)) {
@@ -79,6 +78,14 @@ playButton.addEventListener('click', function (e) {
                     
                     markupBoxes[i].innerHTML = ('👻');
                     console.log('👻')
+
+                    if (ghostList.includes(i)) {
+                        for (let i = 0; i < ghostList.length; i++) {
+                            const ghost = ghostList[i];
+                            box.classList.add('haunted');
+                            markupBoxes[i].innerHTML = ('👻');                            
+                        }
+                    }
                     
                     youLost.classList.add('show');
                     yourScore.insertAdjacentHTML('beforeend', pointsList.length + '0')
