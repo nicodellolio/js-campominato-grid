@@ -48,44 +48,47 @@ playButton.addEventListener('click', function (e) {
     }
 
     let boxes = document.getElementsByClassName('box');
-    
+
     const pointsList = []
+    const pointsToWin = maxCellNumber - 16
+    const youLost = document.getElementById('youLost')
+    const yourScore = document.getElementById('score')
+
     for (let i = 0; i < boxes.length; i++) {
         const box = boxes[i];
 
-        box.addEventListener('click', function handleCLick () {
-
-            
-            box.classList.add('clicked');
-            console.log(`Box selected: ` + [i + 1]);
-
-
-            if (!ghostList.includes(i)) {
-                console.log('BRAVOOOOO');
-                pointsList.push(i)
-            } 
-            console.log(pointsList.length);
-
-            const pointsToWin = maxCellNumber - 16 
-            const youLost = document.getElementById('youLost')
-            const yourScore = document.getElementById('score')
-            
-            if (ghostList.includes(i)) {
-                box.classList.add('haunted');
-
-                const markupBoxes = document.querySelectorAll('.box')
-
-                markupBoxes[i].innerHTML = ('👻');
-                console.log('👻')
-
-                youLost.classList.add('show');
-                yourScore.insertAdjacentHTML('beforeend', pointsList.length + '0')
-                yourScore.insertAdjacentHTML('afterbegin','<p class="fs-2">↻ refresh to play again</p>')
-
-
-            } else if (pointsList.lenght === pointsToWin){
-                alert('WHAT?!?!?!?! YOU WON!!!!!!!')
-                yourScore.insertAdjacentHTML('beforeend', pointsList.length + '0')
+        box.addEventListener('click', function () {
+            if (!youLost.classList.contains('show')) {
+                // The rest of the code for handling the click event goes here
+                
+                box.classList.add('clicked');
+                console.log(`Box selected: ` + [i + 1]);
+                
+                
+                if (!ghostList.includes(i)) {
+                    console.log('BRAVOOOOO');
+                    pointsList.push(i)
+                }
+                
+                console.log(pointsList.length);
+                
+                if (ghostList.includes(i)) {
+                    box.classList.add('haunted');
+                    
+                    const markupBoxes = document.querySelectorAll('.box')
+                    
+                    markupBoxes[i].innerHTML = ('👻');
+                    console.log('👻')
+                    
+                    youLost.classList.add('show');
+                    yourScore.insertAdjacentHTML('beforeend', pointsList.length + '0')
+                    yourScore.insertAdjacentHTML('afterbegin', '<p class="fs-2">↻ refresh to play again</p>')
+                    
+                    
+                } else if (pointsList.lenght === pointsToWin) {
+                    alert('WHAT?!?!?!?! YOU WON!!!!!!!')
+                    yourScore.insertAdjacentHTML('beforeend', pointsList.length + '0')
+                }
             }
 
         })
@@ -96,17 +99,17 @@ playButton.addEventListener('click', function (e) {
 
         while (ghostArray.length < 16) {
 
-            if (maxCellNumber===100) {
+            if (maxCellNumber === 100) {
                 const ghost = Math.floor(Math.random(1) * 100);
                 if (!ghostArray.includes(ghost)) {
                     ghostArray.push(ghost);
                 }
-            } else if (maxCellNumber===81){
+            } else if (maxCellNumber === 81) {
                 const ghost = Math.floor(Math.random(1) * 81);
                 if (!ghostArray.includes(ghost)) {
                     ghostArray.push(ghost);
                 }
-            } else if (maxCellNumber===49){
+            } else if (maxCellNumber === 49) {
                 const ghost = Math.floor(Math.random(1) * 49);
                 if (!ghostArray.includes(ghost)) {
                     ghostArray.push(ghost);
@@ -117,7 +120,7 @@ playButton.addEventListener('click', function (e) {
 
         return ghostArray
     }
-    
+
     const ghostList = generateghost();
     console.log(ghostList);
 
