@@ -79,13 +79,17 @@ playButton.addEventListener('click', function (e) {
                     markupBoxes[i].innerHTML = ('👻');
                     console.log('👻')
 
-                    if (ghostList.includes(i)) {
-                        for (let i = 0; i < ghostList.length; i++) {
-                            const ghost = ghostList[i];
-                            box.classList.add('haunted');
-                            markupBoxes[i].innerHTML = ('👻');                            
+                    
+                    for (let k = 0; k < markupBoxes.length; k++) {
+                        const ghost = ghostList[k];
+
+                        if(ghostList.includes(k)){
+                            
+                            markupBoxes[k].classList.add('haunted');
+                            markupBoxes[k].innerHTML = ('👻');                            
                         }
                     }
+                    
                     
                     youLost.classList.add('show');
                     yourScore.insertAdjacentHTML('beforeend', pointsList.length + '0')
@@ -122,13 +126,16 @@ playButton.addEventListener('click', function (e) {
                     ghostArray.push(ghost);
                 }
             }
-
         }
 
         return ghostArray
     }
 
     const ghostList = generateghost();
-    console.log(ghostList);
+
+    for (let i = 0; i < ghostList.length; i++) {
+        const ghostItem = ghostList[i];
+        console.log(ghostItem);
+    }
 
 })
